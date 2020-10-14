@@ -162,7 +162,7 @@ void CNFGDrawNiceText(const char* text, short scale)
 			//printf("%d\n", tempCharIndex[c]);
 			
 			if (index == 0){
-				iox += 4 * scale;
+				iox += 3 * scale;
 				break;
 			}
 
@@ -196,7 +196,7 @@ void CNFGDrawNiceText(const char* text, short scale)
 				bQuit = *(lmap - 1) & 0x80;
 
 			} while (!bQuit);
-			iox += (charWidth+2) * scale;
+			iox += (charWidth+1) * scale;
 			//iox += 8 * scale;
 		}
 		place++;
@@ -525,7 +525,9 @@ void makeText(int offsetX,int offsetY,int scale)
 			}
 			CNFGDrawText(tw, scale);
 			CNFGPenX = offsetX + (c % 16) * 16 * scale / 2 + 17 * 16*scale/2;
-			CNFGDrawNiceText(tw, scale/2);
+			CNFGPenY -= 7;
+			CNFGPenX -= 3;
+			CNFGDrawNiceText(tw, scale);
 		}
 	}
 	CNFGTackSegment(offsetX+ 16 * 8*scale,offsetY, offsetX  + 16 * 8*scale, offsetY+256/16*16*scale/2);
@@ -540,7 +542,7 @@ void DrawTestText(int offsetX, int offsetY, int scale)
 	CNFGPenY = offsetY;
 	CNFGDrawText(testText, scale);
 	CNFGPenY = offsetY+5*scale;
-	CNFGDrawNiceText(testText, scale/2);
+	CNFGDrawNiceText(testText, scale);
 }
 
 void drawCharacterGrid() 

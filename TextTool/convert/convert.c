@@ -42,7 +42,7 @@ void LoadFont()
 			unsigned char *characterDestination = charArray[characterToLoad];
 
 			int c = -1;
-			memset(&characterDestination[0], 0xE0, 1);
+			memset(&characterDestination[0], 0x40, 1);
 			characterDataBytes++;
 			do
 			{
@@ -64,7 +64,7 @@ void LoadFont()
 				short segmentBreak= (short)(characterData[c] & 0x08)>>3;
 
 				//printf("%d\n",y);	
-				char point=(characterData[c] & 0x80) + (segmentBreak << 6) + (x << 4) + ((y*2>0x07)?0x07:y*2);
+				char point=(characterData[c] & 0x80) + (segmentBreak << 6) + (x << 3) + (y);
 				//printf("%d\n", (int)(characterData[c] & 0x80) + (segmentBreak << 6) + (x << 3) + y);
 				memset(&characterDestination[c + 1], point, 1);
 

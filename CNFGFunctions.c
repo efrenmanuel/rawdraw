@@ -232,7 +232,7 @@ void CNFGDrawNiceText(const char* text, short scale)
 		default:
 			index = CharIndex[c];
 			if (index == 0) {
-				iox += 4 * scale;
+				iox += 3 * scale;
 				break;
 			}
 
@@ -266,7 +266,7 @@ void CNFGDrawNiceText(const char* text, short scale)
 				bQuit = *(lmap - 1) & 0x80;
 
 			} while (!bQuit);
-			iox += (charWidth + 2) * scale;
+			iox += (charWidth + 1) * scale;
 			//iox += 8 * scale;
 		}
 		place++;
